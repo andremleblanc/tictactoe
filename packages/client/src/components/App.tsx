@@ -3,7 +3,7 @@ import '../styles/tictactoe.css'
 import React from 'react';
 import { Difficulty, GameStatus, Marker, Player } from '@mapistry/take-home-challenge-shared';
 
-import { begin } from '../api'
+import { begin, move } from '../api'
 import { Square } from './Square'
 
 export class App extends React.Component<unknown, GameStatus> {
@@ -22,9 +22,9 @@ export class App extends React.Component<unknown, GameStatus> {
   handleClickOnSquare(index: number) {
     const { board } = this.state
     const updatedBoard = board.slice()
-
     updatedBoard[index] = Marker.x
-    this.setState({ board: updatedBoard })
+
+    move(updatedBoard, Difficulty.hard).then(res => this.setState(res))
   }
 
   render() {
