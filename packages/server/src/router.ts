@@ -13,13 +13,9 @@ interface MoveBody {
 }
 
 router.post<'/begin', never, GameStatus>('/begin', (req, res) => {
-  /**
-   * FIXME: Delete this function body and complete it correctly instead.
-   * You do not need to use the arguments provided, but that
-   * is how the other code and tests call it
-   */
+  // TODO: Consider removing, not currently using difficulty or first player settings
   const gameStatus = {
-    board: [Marker.x, _, _, _, _, _, _, _, _],
+    board: [_, _, _, _, _, _, _, _, _],
     winner: null,
   };
   res.json(gameStatus);
