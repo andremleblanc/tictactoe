@@ -6,8 +6,8 @@ export enum Difficulty {
 }
 
 export enum Marker {
-  o = 'o',
-  x = 'x',
+  o = 'O',
+  x = 'X',
 }
 
 export enum Player {

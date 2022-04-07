@@ -1,0 +1,46 @@
+h1 {
+    font-size: 2rem;
+}
+
+.app {
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+    width: fit-content;
+}
+
+.board {
+    margin: 20px auto 0;
+}
+
+.board-row:first-of-type {
+    border-bottom: 1px solid black;
+}
+
+.board-row:last-of-type {
+    border-top: 1px solid black;
+}
+
+.square {
+    height: 70px;
+    float: left;
+    width: 70px;
+}
+
+.square:first-of-type {
+    border-right: 1px solid black;
+}
+
+.square:last-of-type {
+    border-left: 1px solid black;
+}
+
+.square button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 4rem;
+    height: 100%;
+    padding: 0;
+    width: 100%;
+}
