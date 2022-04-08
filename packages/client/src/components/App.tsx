@@ -27,8 +27,13 @@ export class App extends React.Component<unknown, GameStatus> {
     move(updatedBoard, Difficulty.hard).then(res => this.setState(res))
   }
 
+  renderSquare(index: number) {
+    const { board } = this.state
+    return (<Square handleClick={() => this.handleClickOnSquare(index)} value={board[index]} />)
+  }
+
   render() {
-    const { board, winner } = this.state;
+    const { winner } = this.state;
     const messageMap = {
       O: "Muhaha! The singularity is nigh.",
       X: "You've resorted to cheating I see.",
@@ -45,19 +50,19 @@ export class App extends React.Component<unknown, GameStatus> {
         <table className='board'>
           <tbody>
             <tr className='board-row'>
-              <Square handleClick={() => this.handleClickOnSquare(0)} value={board[0]} />
-              <Square handleClick={() => this.handleClickOnSquare(1)} value={board[1]} />
-              <Square handleClick={() => this.handleClickOnSquare(2)} value={board[2]} />
+              { this.renderSquare(0) }
+              { this.renderSquare(1) }
+              { this.renderSquare(2) }
             </tr>
             <tr className='board-row'>
-              <Square handleClick={() => this.handleClickOnSquare(3)} value={board[3]} />
-              <Square handleClick={() => this.handleClickOnSquare(4)} value={board[4]} />
-              <Square handleClick={() => this.handleClickOnSquare(5)} value={board[5]} />
+              { this.renderSquare(3) }
+              { this.renderSquare(4) }
+              { this.renderSquare(5) }
             </tr>
             <tr className='board-row'>
-              <Square handleClick={() => this.handleClickOnSquare(6)} value={board[6]} />
-              <Square handleClick={() => this.handleClickOnSquare(7)} value={board[7]} />
-              <Square handleClick={() => this.handleClickOnSquare(8)} value={board[8]} />
+              { this.renderSquare(6) }
+              { this.renderSquare(7) }
+              { this.renderSquare(8) }
             </tr>
           </tbody>
         </table>
