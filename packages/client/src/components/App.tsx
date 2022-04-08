@@ -28,8 +28,9 @@ export class App extends React.Component<unknown, GameStatus> {
   }
 
   renderSquare(index: number) {
-    const { board } = this.state
-    return (<Square handleClick={() => this.handleClickOnSquare(index)} value={board[index]} />)
+    const { board, winner } = this.state
+    const shouldDisableButton = winner !== null || board[index] !== null
+    return (<Square isDisabled={shouldDisableButton} handleClick={() => this.handleClickOnSquare(index)} value={board[index]} />)
   }
 
   render() {

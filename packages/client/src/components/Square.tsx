@@ -1,12 +1,13 @@
 import { Board } from '@mapistry/take-home-challenge-shared';
 
 interface Props {
+    isDisabled: boolean,
     handleClick(): void,
     value: Board[number]
 }
 
-export const Square = ({ handleClick, value }: Props) => (
+export const Square = ({ isDisabled, handleClick, value }: Props) => (
     <td className="square">
-        <button type='button' onClick={() => handleClick()}>{ value }</button>
+        <button disabled={isDisabled} type='button' onClick={() => handleClick()}>{ value }</button>
     </td>
 )
