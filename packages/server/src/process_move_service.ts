@@ -62,6 +62,7 @@ export class ProcessMoveService {
 
     determineBestMove() {
         const { board } = this
+
         let bestScore;
         let bestMove;
         let score;
@@ -88,7 +89,7 @@ export class ProcessMoveService {
         if (ProcessMoveService.checkForDraw(board)) return { board, winner: Winner.tie}
 
         const move = this.determineBestMove()
-        if (move !== undefined) { board[move] = Marker.o }
+        board[move as number] = Marker.o
 
         winner = ProcessMoveService.checkForWinner(board)
         return { board, winner }
