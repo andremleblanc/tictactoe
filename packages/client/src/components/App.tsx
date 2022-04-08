@@ -29,7 +29,13 @@ export class App extends React.Component<unknown, GameStatus> {
 
   render() {
     const { board, winner } = this.state;
-    const message = winner ? `The winner is ${winner}` : "Silly human, you don't stand a chance!"
+    const messageMap = {
+      O: "Muhaha! The singularity is nigh.",
+      X: "You've resorted to cheating I see.",
+      tie: "Ha! It's like I said, unbeatable."
+    }
+
+    const message = winner ? messageMap[winner] : "Silly human, you don't stand a chance!"
 
     return(
       <div className='app'>

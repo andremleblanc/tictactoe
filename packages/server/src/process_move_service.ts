@@ -1,4 +1,4 @@
-import { Board, Marker } from "@mapistry/take-home-challenge-shared";
+import { Board, Marker, Winner } from "@mapistry/take-home-challenge-shared";
 import { WinningLines } from "./constants";
 
 export class ProcessMoveService {
@@ -19,9 +19,7 @@ export class ProcessMoveService {
 
         const winner = this.checkForWinner(board)
         if (winner !== null) return scoreMap[winner]
-
-        const isDraw = board.every(square => square !== null);
-        if (isDraw) return scoreMap.tie
+        if (this.checkForDraw(board)) return scoreMap.tie
 
         for (let move = 0; move < board.length; move += 1) {
             if (board[move] === null) {
@@ -46,6 +44,10 @@ export class ProcessMoveService {
         const simulatedBoardState = board.slice();
         simulatedBoardState[move] = Marker.o
         return ProcessMoveService.calculateMinimaxScore(simulatedBoardState, 0, false)
+    }
+
+    static checkForDraw(board: Board) {
+        return board.every(square => square !== null)
     }
 
     static checkForWinner(board: Board) {
@@ -83,6 +85,7 @@ export class ProcessMoveService {
         let winner = ProcessMoveService.checkForWinner(board)
 
         if (winner) return { board, winner }
+        if (ProcessMoveService.checkForDraw(board)) return { board, winner: Winner.tie}
 
         const move = this.determineBestMove()
         if (move !== undefined) { board[move] = Marker.o }
