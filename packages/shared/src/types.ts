@@ -13,7 +13,7 @@ export interface WinningLine {
 
 export type GameStatus = {
   board: Board;
-  winner: keyof typeof Winner | null;
+  winner: typeof Winner.o | typeof Winner.x | typeof Winner.tie | null;
   winningLine?: WinningLine;
 };
 
